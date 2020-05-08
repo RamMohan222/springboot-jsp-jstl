@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,18 +14,21 @@ import com.example.demo.model.Car;
 import com.example.demo.model.Person;
 
 @Controller
-public class ATMDataViewController {
+public class DataViewController {
 
 	@GetMapping("/")
 	public String list(@RequestParam(required = false) String action, Map<String, Object> model) {
 		model.put("this_time", new Date().toString());
-		
+
 		if ("persons".equals(action)) {
 			model.put("persons", getPersons());
 		} else if ("cars".equals(action)) {
 			model.put("cars", getCars());
+		} else if ("attributes".equals(action)) {
+			model.put("attributes", getAttributesData());
+			return "attributesList";
 		}
-	
+
 		return "index";
 	}
 
@@ -46,6 +50,18 @@ public class ATMDataViewController {
 		cars.add(new Car(3, "Model 3"));
 
 		return cars;
+	}
+
+	private List<Map<String, String>> getAttributesData() {
+		List<Map<String, String>> attributes = new ArrayList<>();
+		for (int i = 1; i < 10; i++) {
+			Map<String, String> attribute = new HashMap<>();
+			attribute.put("id", Integer.toString(i));
+			attribute.put("name", "name " + i);
+			attributes.add(attribute);
+		}
+
+		return attributes;
 	}
 
 }

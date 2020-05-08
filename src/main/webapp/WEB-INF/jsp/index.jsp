@@ -1,11 +1,12 @@
 <!doctype html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="display" uri="http://displaytag.sf.net"%>
 <html lang="en">
 <head>
 </head>
 
-<body style=" text-align: center;">
+<body style="text-align: center;">
 	<div><%="JSP Example:"%>${this_time}</div>
 	<div>
 		Type <a href="/?action=persons">Persons</a>
@@ -14,7 +15,7 @@
 		Type <a href="/?action=cars">Cars</a>
 	</div>
 	<div>
-		Type <a href="/?action=three">Empty</a>
+		Type <a href="/?action=attributes">Empty</a>
 	</div>
 
 	<c:if test="${persons != null }">
@@ -54,7 +55,6 @@
 			</tbody>
 		</table>
 	</c:if>
-
 
 </body>
 
